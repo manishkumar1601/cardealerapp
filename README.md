@@ -25,3 +25,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 - Admin can check account details on Profile page.
 - Admin can change name from profile page.
 - Mobile number is not changeable, once you signup you cannot change mobile number.
+
+
+Dealer Recording : https://recordit.co/R27FKjflP3
+
+Admin Recording : https://recordit.co/tbSI6lLJwN
