@@ -1,0 +1,69 @@
+<section class="card-components">
+  <div class="container-fluid">
+    <!-- ========== title-wrapper start ========== -->
+    <div class="title-wrapper pt-30">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="title mb-30">
+            <h2>Cars</h2>
+          </div>
+        </div>
+        <!-- end col -->
+        <div class="col-md-6">
+          <div class="breadcrumb-wrapper mb-30">
+            <div class="col-auto">
+              <button type="button" class="main-btn primary-btn p-lg-2" (click)="open(false)">
+                <i class="lni lni-plus mr-2"></i>Add Car
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- end col -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- ========== title-wrapper end ========== -->
+    <div *ngIf="carErrorMessage === true">
+      <h1>No Cars Found!</h1>
+    </div>
+    <!-- ========== cards-styles start ========== -->
+    <div class="cards-styles d-flex flex-wrap" *ngIf="carErrorMessage === false">
+      <!-- ========= card-style-1 start ========= -->
+      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6" *ngFor="let car of cars">
+        <div class="card-style-2 mb-30">
+          <div class="card-image">
+            <img class="cardImage" src={{car.image}} alt="image">
+          </div>
+          <div class="card-content">
+            <h4 *ngIf="data.type === 'admin'">Owner : {{car?.username}}</h4>
+            <div class="d-flex justify-content-between">
+              <h4>{{car.name | uppercase }}</h4>
+              <!-- dot button -->
+              <div>
+                <button class="bg-transparent border-0" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="lni lni-more vertical"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <a (click)="open(true, car)"><i class="lni lni-pencil-alt"></i>&nbsp;&nbsp;&nbsp;Edit</a>
+                  </li>
+                  <li>
+                    <a (click)="deleteCar(car)"><i class="lni lni-trash-can"></i>&nbsp;&nbsp;&nbsp;Delete</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- dot button end -->
+            </div>
+            <h5>Model : {{car.model | uppercase }}</h5>
+            <h6>Year : {{car.year}}</h6>
+          </div>
+        </div>
+      </div>
+      <!-- end row -->
+      <!-- ========= card-style-1 end ========= -->
+    </div>
+    <!-- ========== cards-styles end ========== -->
+  </div>
+  <!-- end container -->
+</section>

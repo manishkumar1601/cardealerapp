@@ -1,0 +1,66 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ isEdit ? 'Update Car' : 'Add Car'}}</h4>
+  <button type="button" class="close" (click)="activeModel.dismiss()">
+    &times;
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="carForm">
+
+    <div class="form-group">
+      <label for="name">Car Name<sup class="text-danger">*</sup></label>
+      <div class="input-group">
+        <input type="text" class="form-control" formControlName="name">
+      </div>
+      <small class="text-danger"
+        *ngIf="carForm.controls['name']?.errors?.['required'] && carForm.controls['name'].touched">Enter
+        Car Name</small>
+    </div>
+
+    <div class="form-group">
+      <label for="model">Car Model<sup class="text-danger">*</sup></label>
+      <div class="input-group">
+        <input type="text" class="form-control" formControlName="model">
+      </div>
+      <small class="text-danger"
+        *ngIf="carForm.controls['model']?.errors?.['required'] && carForm.controls['model'].touched">Enter
+        Car Model</small>
+    </div>
+
+    <div class="form-group">
+      <label for="year">Car Year<sup class="text-danger">*</sup></label>
+      <div class="input-group">
+        <select formControlName="year" class="form-select">
+          <option *ngFor="let year of years" [value]="year" [selected]="carForm.value['year'] === year">{{year}}
+          </option>
+        </select>
+      </div>
+      <small class="text-danger"
+        *ngIf="carForm.controls['year']?.errors?.['required'] && carForm.controls['year'].touched">Select
+        Year</small>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Car Image<sup class="text-danger">*</sup></label>
+      <div class="input-group">
+        <input type="file" (change)="onFileSelected($event)" class="form-control">
+      </div>
+      <small class="text-danger"
+        *ngIf="carForm.controls['image']?.errors?.['required'] && carForm.controls['image'].touched"></small>
+    </div>
+
+    <div class="mb-3">
+      <img [src]="selectedFile" class="carImageReview" />
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="main-btn dark-btn btn-sm" (click)="activeModel.dismiss()">Close</button>
+  <button type="button"
+    class="main-btn primary-btn btn-sm text-center"
+    [ngClass]=" carForm.invalid ? ' disabled' : '' "
+    [disabled]=" carForm.invalid" (click)="addCar()">{{ isEdit ?
+    'Save' : 'Add'}}
+  </button>
+</div>

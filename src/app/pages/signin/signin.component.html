@@ -1,0 +1,93 @@
+<section class="signin-section">
+  <div class="container-fluid">
+
+    <div class="row g-0 auth-row">
+      <div class="col-lg-6">
+        <div class="auth-cover-wrapper bg-primary-100">
+          <div class="auth-cover">
+            <div class="title text-center">
+              <h1 class="text-primary mb-10">Welcome Back</h1>
+            </div>
+            <div class="cover-image">
+              <img src="assets/images/auth/signin-image.svg" alt="">
+            </div>
+            <div class="shape-image">
+              <img src="assets/images/auth/shape.svg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end col -->
+      <div class="col-lg-6">
+        <div class="signin-wrapper">
+          <div class="form-wrapper">
+            <h1 class="mb-15">Sign In</h1>
+            <form [formGroup]="loginForm">
+              <div class="row">
+                <div class="col-12">
+                  <div class="input-style-1">
+                    <label>Mobile Number<sup class="text-danger">*</sup></label>
+                    <input type="text" formControlName="mobileNo" placeholder="Mobile Number">
+                    <small
+                      *ngIf="loginForm.controls['mobileNo']?.errors?.['required'] && loginForm.controls['mobileNo'].touched"
+                      class="text text-danger">Enter Mobile Number</small>
+                    <small
+                      *ngIf="loginForm.controls['mobileNo']?.errors?.['pattern'] && loginForm.controls['mobileNo'].touched"
+                      class="text text-danger">Enter correct Mobile number and only 10 Digit</small>
+                  </div>
+                </div>
+                <!-- end col -->
+                <div class="col-12">
+                  <div class="input-style-1">
+                    <label>Password<sup class="text-danger">*</sup></label>
+                    <input type="password" formControlName="password" placeholder="Password">
+                    <small
+                      *ngIf="loginForm.controls['password']?.errors?.['required'] && loginForm.controls['password'].touched"
+                      class="text text-danger">Enter Password</small>
+                    <small
+                      *ngIf="loginForm.controls['password']?.errors?.['pattern'] && loginForm.controls['password'].touched"
+                      class="text text-danger">Enter Proper Password with 1 capital and small letter, number and special
+                      character and at least 6 Characters</small>
+                  </div>
+                </div>
+                <!-- end col -->
+                <div class="col-xxl-6 col-lg-12 col-md-6">
+                  <div class="
+                      text-start text-md-end text-lg-start text-xxl-end
+                      mb-30
+                    ">
+                    <a class="hover-underline">Forgot Password?</a>
+                  </div>
+                </div>
+                <!-- end col -->
+                <div class="col-12">
+                  <div class="
+                      button-group
+                      d-flex
+                      justify-content-center
+                      flex-wrap
+                    ">
+                    <button class="main-btn primary-btn w-100 text-center"
+                      [ngClass]="loginForm.invalid ? ' disabled' : '' "
+                      (click)="signin()" [disabled]="loginForm.invalid">
+                      Sign In
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- end row -->
+            </form>
+            <div class="singin-option pt-40">
+              <p class="text-sm text-medium text-dark text-center">
+                Don’t have any account yet?
+                <a routerLink="/signup">Create an account</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end col -->
+    </div>
+    <!-- end row -->
+  </div>
+</section>

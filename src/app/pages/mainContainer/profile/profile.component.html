@@ -1,0 +1,102 @@
+<section class="section">
+  <div class="container-fluid">
+    <!-- ========== title-wrapper start ========== -->
+    <div class="title-wrapper pt-30">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="titlemb-30">
+            <h2>Profile</h2>
+          </div>
+        </div>
+        <!-- end col -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- ========== title-wrapper end ========== -->
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card-style settings-card-1 h-100">
+          <div class="title mb-30">
+            <h6><b>My Details</b></h6>
+          </div>
+          <div class="profile-info">
+            <div class="d-flex">
+              <div class="profile-icon pr-3">
+                <i class="lni lni-user"></i>
+              </div>
+              <div class="profile-meta">
+                <h5 class="text-bold text-dark mb-10">{{data.name}}</h5>
+                <p class="text-sm text-gray">{{data.type | userType }}</p>
+                <p class="text-sm text-gray"><i class="lni lni-mobile"></i> {{data.mobileNo}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end card -->
+      </div>
+      <!-- end col -->
+
+      <div class="col-lg-6">
+        <div class="card-style settings-card-2 h-100">
+          <div class="title
+          mb-30
+          d-flex
+          justify-content-between">
+            <span class="align-bottom"><b>My Profile</b></span>
+            <button class="border-0 bg-transparent" [hidden]="isEdit" (click)="editProfile(true)">
+              <i class="lni lni-pencil-alt mr-1"></i><b>Edit</b>
+            </button>
+          </div>
+          <form [formGroup]="profileForm">
+            <div class="row">
+
+              <div class="col-12">
+                <div class="input-style-1">
+                  <label>Name</label>
+                  <input type="text" formControlName="name">
+                  <small
+                      *ngIf="profileForm.controls['name']?.errors?.['required'] && profileForm.controls['name'].touched"
+                      class="text text-danger">Enter Name</small>
+                    <small
+                      *ngIf="profileForm.controls['name']?.errors?.['pattern'] && profileForm.controls['name'].touched"
+                      class="text text-danger">Enter only Alphabets and at least 4 characters</small>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="input-style-1">
+                  <label>Mobile Number</label>
+                  <input type="text" formControlName="mobileNo">
+                  <small
+                      *ngIf="profileForm.controls['mobileNo']?.errors?.['required'] && profileForm.controls['mobileNo'].touched"
+                      class="text text-danger">Enter Mobile Number</small>
+                    <small
+                      *ngIf="profileForm.controls['mobileNo']?.errors?.['pattern'] && profileForm.controls['mobileNo'].touched"
+                      class="text text-danger">Enter correct Mobile number and only 10 Digit</small>
+                </div>
+              </div>
+
+              <div class="col-12 d-flex justify-content-between">
+                <button class="main-btn btn-sm primary-btn"
+                        [disabled]="profileForm.invalid || !isEdit"
+                        [ngClass]="profileForm.invalid || !isEdit ? 'disabled' : ''"
+                        (click)="updateUser()">
+                  Update Profile
+                </button>
+                <button class="main-btn btn-sm dark-btn"
+                        (click)="reset()" [hidden]="!isEdit">
+                  Reset
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- end card -->
+      </div>
+      <!-- end col -->
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- end container -->
+</section>

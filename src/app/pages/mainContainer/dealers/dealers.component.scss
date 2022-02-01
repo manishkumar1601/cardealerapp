@@ -1,0 +1,35 @@
+.link-pointer{
+  cursor:pointer;
+}
+
+th{
+  border-bottom: 0 !important;
+  padding-left: 0 !important;
+  border-top: 0 !important;
+}
+
+td{
+  padding-left: 0 !important;
+}
+
+.dropdown-menu {
+  margin-right: -20px !important;
+  min-width: 8rem !important;
+  padding: 5px !important;
+}
+
+ul li {
+  cursor: pointer;
+  padding: 4px 8px !important;
+  border-radius: 6px;
+
+  &:hover {
+    color: #4a6cf7;
+    background: rgba(74, 108, 247, 0.05);
+  }
+}
+
+.vertical{
+  transform: rotate(90deg);
+}
+

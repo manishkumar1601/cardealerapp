@@ -1,0 +1,76 @@
+<div class="container-fluid">
+  <!-- ========== title-wrapper start ========== -->
+  <div class="title-wrapper pt-30">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="title mb-30">
+          <h2>Dealers</h2>
+        </div>
+      </div>
+      <!-- end col -->
+      <div class="col-md-6">
+        <div class="breadcrumb-wrapper mb-30">
+          <div class="col-auto">
+            <button type="button" class="main-btn primary-btn p-lg-2" (click)="open(false)">
+              <i class="lni lni-plus mr-2"></i>Add Dealer
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- end col -->
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- ========== title-wrapper end ========== -->
+
+  <!-- ========== tables-wrapper start ========== -->
+  <div *ngIf="dealerErrorMessage">
+    <h1>No Dealers Found!</h1>
+  </div>
+
+
+    <div class="row" *ngIf="!dealerErrorMessage">
+        <div class="card-style mb-30">
+          <div class="table-wrapper table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th><h6>Name</h6></th>
+                  <th><h6>Mobile Number</h6></th>
+                  <th><h6>Actions</h6></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let dealer of dealers">
+                  <td class="min-width">
+                    <p>{{dealer.name}}</p>
+                  </td>
+                  <td class="min-width">
+                    <p>{{dealer.mobileNo}}</p>
+                  </td>
+                  <td class="min-width">
+                    <div>
+                      <button class="bg-transparent border-0" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="lni lni-more vertical"></i>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a (click)="open(true, dealer)"><i class="lni lni-pencil-alt mr-2"></i>Edit</a>
+                        </li>
+                        <li>
+                          <a (click)="deleteDealer(dealer)"><i class="lni lni-trash-can mr-2"></i>Delete</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+                <!-- end table row -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+    <!-- end row -->
+  <!-- ========== tables-wrapper end ========== -->
+</div>

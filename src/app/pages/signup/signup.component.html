@@ -1,0 +1,105 @@
+<section class="signin-section">
+  <div class="container-fluid">
+
+    <div class="row g-0 auth-row">
+      <div class="col-lg-6">
+        <div class="auth-cover-wrapper bg-primary-100">
+          <div class="auth-cover">
+            <div class="title text-center">
+              <h1 class="text-primary mb-10">Get Started</h1>
+            </div>
+            <div class="cover-image">
+              <img src="assets/images/auth/signin-image.svg" alt="">
+            </div>
+            <div class="shape-image">
+              <img src="assets/images/auth/shape.svg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end col -->
+      <div class="col-lg-6">
+        <div class="signup-wrapper">
+          <div class="form-wrapper">
+            <h1 class="mb-15">Sign Up</h1>
+            <form [formGroup]="signupForm">
+              <div class="row">
+                <div class="col-12">
+                  <div class="input-style-1">
+                    <label>Name<sup class="text-danger">*</sup></label>
+                    <input type="text" formControlName="name" placeholder="Name">
+                    <small
+                      *ngIf="signupForm.controls['name']?.errors?.['required'] && signupForm.controls['name'].touched"
+                      class="text text-danger">Enter Name</small>
+                    <small
+                      *ngIf="signupForm.controls['name']?.errors?.['pattern'] && signupForm.controls['name'].touched"
+                      class="text text-danger">Enter only Alphabets and at least 4 characters</small>
+                  </div>
+                </div>
+                <!-- end col -->
+                <div class="col-12">
+                  <div class="input-style-1">
+                    <label>Mobile Number<sup class="text-danger">*</sup></label>
+                    <input type="text" formControlName="mobileNo" placeholder="Mobile Number">
+                    <small
+                      *ngIf="signupForm.controls['mobileNo']?.errors?.['required'] && signupForm.controls['mobileNo'].touched"
+                      class="text text-danger">Enter Mobile Number</small>
+                    <small
+                      *ngIf="signupForm.controls['mobileNo']?.errors?.['pattern'] && signupForm.controls['mobileNo'].touched"
+                      class="text text-danger">Enter correct Mobile number and only 10 Digit</small>
+                  </div>
+                </div>
+                <!-- end col -->
+                <div class="col-12">
+                  <div class="input-style-1">
+                    <label>Password<sup class="text-danger">*</sup></label>
+                    <input type="password" formControlName="password" placeholder="Password">
+                    <small
+                      *ngIf="signupForm.controls['password']?.errors?.['required'] && signupForm.controls['password'].touched"
+                      class="text text-danger">Enter Password</small>
+                    <small
+                      *ngIf="signupForm.controls['password']?.errors?.['pattern'] && signupForm.controls['password'].touched"
+                      class="text text-danger">Enter Proper Password with 1 capital and small letter, number and special
+                      character and at least 6 Characters</small>
+                  </div>
+                </div>
+                <!-- end col -->
+                <div class="col-12">
+                  <div class="input-style-1">
+                    <label>Confirm Password<sup class="text-danger">*</sup></label>
+                    <input type="password" formControlName="confirmPassword" placeholder="Confirm Password">
+                    <small
+                      *ngIf="signupForm.controls['confirmPassword']?.errors?.['required'] && signupForm.controls['confirmPassword'].touched"
+                      class="text text-danger">Enter Confirm Password</small>
+                    <small
+                      *ngIf="signupForm.get('confirmPassword')?.errors?.['confirmPasswordValidator']  && signupForm.controls['confirmPassword'].touched"
+                      class="text-danger">Password not Matched</small>
+                  </div>
+                </div>
+                <!-- end col -->
+                <div class="col-12">
+                  <div class="button-group d-flex justify-content-center flex-wrap">
+                    <button (click)="signup()" class="main-btn primary-btn w-100 text-center"
+                      [ngClass]="signupForm.invalid ? ' disabled' : ''"
+                      [disabled]="signupForm.invalid">
+                      Sign Up
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- end row -->
+            </form>
+            <div class="singup-option pt-40">
+              <p class="text-sm text-medium text-dark text-center">
+                Already have an account? <a routerLink="/signin">Sign In</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end col -->
+    </div>
+    <!-- end row -->
+
+  </div>
+</section>

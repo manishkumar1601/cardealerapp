@@ -1,0 +1,36 @@
+<!-- <p>sidebar works!</p> -->
+<aside class="sidebar-nav-wrapper" [ngClass]="{'active':toggleSidebar}">
+  <div class="navbar-logo">
+    <a href="index.html">
+      <img class="logo" src="assets/images/logo/logo.png" alt="logo">
+    </a>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li class="nav-item" routerLinkActive=" active">
+        <a routerLink="/dashboard" class="sidebarMenu">
+          <span class="icon">
+            <i class="lni lni-dashboard"></i>
+          </span>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive=" active">
+        <a routerLink="/carlist" class="sidebarMenu">
+          <span class="icon">
+            <i class="lni lni-car"></i>
+          </span>
+          <span class="text">Cars</span>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive=" active" *ngIf="data?.type === 'admin'">
+        <a routerLink="/dealers" class="sidebarMenu">
+          <span class="icon">
+            <i class="lni lni-users"></i>
+          </span>
+          <span class="text">Dealers</span><br>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>

@@ -1,0 +1,11 @@
+<app-sidebar [toggleSidebar]="toggleSidebar"></app-sidebar>
+
+<main class="main-wrapper" [ngClass]="{'active':toggleSidebar}">
+
+  <app-header [(toggleSidebar)]="toggleSidebar"></app-header>
+
+  <router-outlet></router-outlet>
+
+  <app-footer></app-footer>
+
+</main>
